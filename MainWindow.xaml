@@ -1,0 +1,15 @@
+﻿<Window x:Class="WoW.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ContactList" Height="450" Width="432.8" ResizeMode="CanMinimize" Icon="images/blackSky.jpg" Background="AliceBlue" WindowStyle="SingleBorderWindow" Closing="Window_Closing">
+
+
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="81" Margin="311,21,0,0" VerticalAlignment="Top" Width="97" Source="images/smoke.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="ClickHere" Stretch="Fill" Panel.ZIndex="1"/>
+
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="False" ItemsSource="{Binding}"  Name="dataGrid1" SelectionMode="Extended" SelectionUnit="FullRow" VerticalGridLinesBrush="Gray" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+            
+        </DataGrid>
+    </Grid>
+
+</Window>
