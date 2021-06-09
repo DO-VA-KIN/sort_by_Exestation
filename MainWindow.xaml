@@ -1,21 +1,36 @@
 ﻿<Window x:Class="WoW.MainWindow"
+    xmlns:cm="clr-namespace:System.ComponentModel;assembly=system"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ContactList" Height="450" Width="432.8" ResizeMode="CanMinimize" Icon="images/blackSky.jpg" Background="AliceBlue" WindowStyle="SingleBorderWindow" Closing="Window_Closing">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="278.8" Width="434.933" ResizeMode="CanMinimize" Icon="images/blackSky.jpg" Background="AliceBlue" WindowStyle="SingleBorderWindow" Closing="Window_Closing">
+    <Window.Resources>
+        <cm:BackgroundWorker x:Key="BackgroundWorker1"
+            WorkerReportsProgress="True"
+            WorkerSupportsCancellation="True"
+            DoWork="BackgroundWorker1_DoWork"
+            ProgressChanged="BackgroundWorker1_ProgressChanged"
+            RunWorkerCompleted="BackgroundWorker1_RunWorkerCompleted"/>
+    </Window.Resources>
 
-
-    <Grid>
-        <Image HorizontalAlignment="Left" Height="81" Margin="308,318,0,0" VerticalAlignment="Top" Width="97" Source="images/smoke.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="ClickHere" Stretch="Fill" Panel.ZIndex="1"/>
-
-        <DataGrid AutoGenerateColumns="True" IsReadOnly="False" ItemsSource="{Binding}"  Name="dataGrid1" SelectionMode="Extended" SelectionUnit="FullRow" VerticalGridLinesBrush="Gray" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-
-        </DataGrid>
-        <TextBox x:Name="TextWayOut" HorizontalAlignment="Left" Height="21" Margin="98,10,0,0" TextWrapping="Wrap" Text="откуда" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayOut_TextChanged"/>
-        <TextBox x:Name="TextWayIn" HorizontalAlignment="Left" Height="21" Margin="98,36,0,0" TextWrapping="Wrap" Text="куда" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayIn_TextChanged"/>
+    <Grid Margin="0,0,-0.2,0">
+        <Image HorizontalAlignment="Left" Height="33" Margin="25,204,0,0" VerticalAlignment="Top" Width="48" Source="images/blackSky.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="ClickHere" Stretch="Fill" Panel.ZIndex="1"/>
+        <TextBox x:Name="TextWayOut" HorizontalAlignment="Left" Height="21" Margin="98,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayOut_TextChanged"/>
+        <TextBox x:Name="TextWayIn" HorizontalAlignment="Left" Height="21" Margin="98,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayIn_TextChanged"/>
         <Label Content="Переместить из" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top"/>
         <Label Content="Переместить в" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Width="98"/>
         <Button x:Name="ButtonWayOut" Content="..." HorizontalAlignment="Left" Margin="400,11,0,0" VerticalAlignment="Top" Width="19" Click="ButtonWayOut_Click"/>
         <Button x:Name="ButtonWayIn" Content="..." HorizontalAlignment="Left" Margin="400,37,0,0" VerticalAlignment="Top" Width="19" Click="ButtonWayIn_Click"/>
+        <Button x:Name="ButtonStart" Content="Пуск" HorizontalAlignment="Left" Margin="174,204,0,0" VerticalAlignment="Top" Width="85" FontSize="15" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Height="33" Click="Button_Click"/>
+        <ProgressBar x:Name="ProgressBar1" HorizontalAlignment="Left" Height="13" Margin="292,224,0,0" VerticalAlignment="Top" Width="119"/>
+        <CheckBox Content="сортировать и копировать" Height="19" HorizontalAlignment="Left" Margin="114,130,0,0" x:Name="checkBoxCopy" VerticalAlignment="Top" Width="Auto" IsChecked="False" FontSize="12" ForceCursor="False" Checked="checkBoxCopy_Checked">
+            <CheckBox.RenderTransform>
+                <ScaleTransform ScaleX="1.15" ScaleY="1.15"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <CheckBox Content="сортировать и переместить" Height="19" HorizontalAlignment="Left" Margin="114,103,0,0" x:Name="checkBoxMove" VerticalAlignment="Top" Width="Auto" IsChecked="True" FontSize="12" ForceCursor="False" Checked="checkBoxMove_Checked">
+            <CheckBox.RenderTransform>
+                <ScaleTransform ScaleX="1.15" ScaleY="1.15"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
     </Grid>
 
 </Window>
