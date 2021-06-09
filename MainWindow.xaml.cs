@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.Windows.Forms;
+
+
 
 namespace WoW
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        string wayOut = "";
+        string wayIn = "";
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,6 +32,28 @@ namespace WoW
 
         }
 
+
+        private void TextWayOut_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            wayOut = TextWayOut.Text;
+        }
+        private void TextWayIn_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            wayIn = TextWayIn.Text;
+        }
+        private void ButtonWayOut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void ButtonWayIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void chooseSaveWay()
+        {
+            FolderBrowserDialog fbdReader = new FolderBrowserDialog();
+            string way = fbdReader.SelectedPath;
+        }
 
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

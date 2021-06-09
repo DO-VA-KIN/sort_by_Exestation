@@ -11,7 +11,4 @@ C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW.csproj.GenerateResource.cache
 C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW.csproj.CoreCompileInputs.cache
 C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW.exe
 C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW.pdb
-C:\Users\Gimn4\source\repos\WoW\bin\Debug\Database1.mdf
-C:\Users\Gimn4\source\repos\WoW\bin\Debug\Database1_log.ldf
-C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW_Content.g.cs
 C:\Users\Gimn4\source\repos\WoW\obj\Debug\WoW.csprojAssemblyReference.cache

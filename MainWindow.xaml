@@ -5,11 +5,17 @@
 
 
     <Grid>
-        <Image HorizontalAlignment="Left" Height="81" Margin="311,21,0,0" VerticalAlignment="Top" Width="97" Source="images/smoke.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="ClickHere" Stretch="Fill" Panel.ZIndex="1"/>
+        <Image HorizontalAlignment="Left" Height="81" Margin="308,318,0,0" VerticalAlignment="Top" Width="97" Source="images/smoke.jpg" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="ClickHere" Stretch="Fill" Panel.ZIndex="1"/>
 
         <DataGrid AutoGenerateColumns="True" IsReadOnly="False" ItemsSource="{Binding}"  Name="dataGrid1" SelectionMode="Extended" SelectionUnit="FullRow" VerticalGridLinesBrush="Gray" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            
+
         </DataGrid>
+        <TextBox x:Name="TextWayOut" HorizontalAlignment="Left" Height="21" Margin="98,10,0,0" TextWrapping="Wrap" Text="откуда" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayOut_TextChanged"/>
+        <TextBox x:Name="TextWayIn" HorizontalAlignment="Left" Height="21" Margin="98,36,0,0" TextWrapping="Wrap" Text="куда" VerticalAlignment="Top" Width="302" FontSize="14" TextChanged="TextWayIn_TextChanged"/>
+        <Label Content="Переместить из" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Переместить в" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="ButtonWayOut" Content="..." HorizontalAlignment="Left" Margin="400,11,0,0" VerticalAlignment="Top" Width="19" Click="ButtonWayOut_Click"/>
+        <Button x:Name="ButtonWayIn" Content="..." HorizontalAlignment="Left" Margin="400,37,0,0" VerticalAlignment="Top" Width="19" Click="ButtonWayIn_Click"/>
     </Grid>
 
 </Window>
