@@ -121,7 +121,7 @@ namespace WoW
         // осн алгоритм
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!Directory.Exists(wayOut))
+            if (!Directory.Exists(wayOut) || !Directory.Exists(wayIn))
             {
                 MessageBox.Show("Не удалось получить доступ к директории\n" +
                     "Вероятно путь не существует","Ошибка", MessageBoxButton.OK,
@@ -142,20 +142,56 @@ namespace WoW
 
                     if (photoEx.Contains(fInfo.Extension))
                     {
-                        string way = wayIn;
+                        string way = wayIn + ("\\photo");
+                        if (!Directory.Exists(way))
+                        {
+                            DirectoryInfo dirInfo = new DirectoryInfo(wayIn);
+                            dirInfo.CreateSubdirectory("photo");
+                        }
+
                         if ((bool)e.Argument)
-                            fInfo.MoveTo(way);
-                        else fInfo.CopyTo(way);
+                            fInfo.MoveTo(way + "\\" + fInfo.Name);
+                        else fInfo.CopyTo(way + "\\" + fInfo.Name);
                 }
                     else if (videoEx.Contains(fInfo.Extension))
                     {
-                        video.Add(fInfo.Extension);
+                        string way = wayIn + ("\\video");
+                        if (!Directory.Exists(way))
+                        {
+                            DirectoryInfo dirInfo = new DirectoryInfo(wayIn);
+                            dirInfo.CreateSubdirectory("video");
+                        }
+
+                        if ((bool)e.Argument)
+                            fInfo.MoveTo(way + "\\" + fInfo.Name);
+                        else fInfo.CopyTo(way + "\\" + fInfo.Name);
                     }
                     else if (musicEx.Contains(fInfo.Extension))
                     {
-                        music.Add(fInfo.Extension);
+                        string way = wayIn + ("\\music");
+                        if (!Directory.Exists(way))
+                        {
+                            DirectoryInfo dirInfo = new DirectoryInfo(wayIn);
+                            dirInfo.CreateSubdirectory("music");
+                        }
+
+                        if ((bool)e.Argument)
+                            fInfo.MoveTo(way + "\\" + fInfo.Name);
+                        else fInfo.CopyTo(way + "\\" + fInfo.Name);
                     }
-                    else other.Add(fInfo.Extension);
+                    else
+                    {
+                        string way = wayIn + ("\\other");
+                        if (!Directory.Exists(way + fInfo.Name))
+                        {
+                            DirectoryInfo dirInfo = new DirectoryInfo(wayIn);
+                            dirInfo.CreateSubdirectory("other");
+                        }
+
+                        if ((bool)e.Argument)
+                            fInfo.MoveTo(way + "\\" + fInfo.Name);
+                        else fInfo.CopyTo(way + "\\" + fInfo.Name);
+                    }
                 }
                 catch { }
 
