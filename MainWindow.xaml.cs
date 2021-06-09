@@ -128,12 +128,22 @@ namespace WoW
                     MessageBoxImage.Error);
                 return;
             }
+            else
+            {
+                string[] allFiles = Directory.GetFiles(wayOut);
+                int numFiles = allFiles.Length;
+                ProgressBar1.Maximum = numFiles;
+                labelProgress.Content = 0 + " из " + numFiles;
+            }
             disable();
             BackgroundWorker1.RunWorkerAsync(moveFiles);
         }
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            int count = 0;
+
+
             foreach (string file in Directory.GetFiles(wayOut))
             {
                 try
@@ -195,28 +205,21 @@ namespace WoW
                 }
                 catch { }
 
-
-                //if (photoEx.Contains(fInfo.Extension))
-                //{
-                //    photo.Add(fInfo.Extension);
-                //}
-                //else if (videoEx.Contains(fInfo.Extension))
-                //{
-                //    video.Add(fInfo.Extension);
-                //}
-                //else if (musicEx.Contains(fInfo.Extension))
-                //{
-                //    music.Add(fInfo.Extension);
-                //}
-                //else other.Add(fInfo.Extension);
+                count++;
+                BackgroundWorker1.ReportProgress(count);
             }
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        { ProgressBar1.Value = e.ProgressPercentage; }
+        { 
+            ProgressBar1.Value = e.ProgressPercentage;
+            labelProgress.Content = ProgressBar1.Value + " из " + ProgressBar1.Maximum;
+        }
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            ProgressBar1.Value = ProgressBar1.Maximum;
+            labelProgress.Content = ProgressBar1.Value + " из " + ProgressBar1.Maximum;
             enable();
         }
 

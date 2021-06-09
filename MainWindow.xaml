@@ -31,6 +31,7 @@
                 <ScaleTransform ScaleX="1.15" ScaleY="1.15"/>
             </CheckBox.RenderTransform>
         </CheckBox>
+        <Label x:Name="labelProgress" Content="" Margin="303,204,0,0" VerticalAlignment="Top" Width="108" Height="21" FontSize="10" HorizontalAlignment="Left"/>
     </Grid>
 
 </Window>
